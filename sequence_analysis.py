@@ -22,6 +22,9 @@ df_hrem = pd.read_csv("path to the directory that the raw data is included/{}".f
 #create initial most frequent sequence
 def most_freq_nuc(df_file):
     freq_seq_list = []
+    num_id = [0, 1, 2, 3, 4, 5]
+    list_add = ['A','C','G','T','-','+']
+    list_add_mix = ['(A)', '(C)','(G)','(T)','(-)','(+)']
     for nuc_A, nuc_C, nuc_G, nuc_T, nuc_gap, nuc_ins in zip(df_file['A'], df_file['C'], df_file['G'], df_file['T'], df_file['Gap'], df_file['Ins']):
         nuc_list = []
         nuc_list.append(nuc_A)
@@ -30,30 +33,13 @@ def most_freq_nuc(df_file):
         nuc_list.append(nuc_T)
         nuc_list.append(nuc_gap)
         nuc_list.append(nuc_ins)
-        if nuc_list[0] == max(nuc_list) and nuc_list[0] >= 90:
-            freq_seq_list.append('A')
-        elif nuc_list[0] == max(nuc_list) and nuc_list[0] < 90:
-            freq_seq_list.append('(A)')
-        elif nuc_list[1] == max(nuc_list) and nuc_list[1] >= 90:
-            freq_seq_list.append('C')
-        elif nuc_list[1] == max(nuc_list) and nuc_list[1] < 90:
-            freq_seq_list.append('(C)')
-        elif nuc_list[2] == max(nuc_list) and nuc_list[2] >= 90:
-            freq_seq_list.append('G')
-        elif nuc_list[2] == max(nuc_list) and nuc_list[2] < 90:
-            freq_seq_list.append('(G)')
-        elif nuc_list[3] == max(nuc_list) and nuc_list[3] >= 90:
-            freq_seq_list.append('T')
-        elif nuc_list[3] == max(nuc_list) and nuc_list[3] < 90:
-            freq_seq_list.append('(T)')
-        elif nuc_list[4] == max(nuc_list) and nuc_list[4] >= 90:
-            freq_seq_list.append('-')
-        elif nuc_list[4] == max(nuc_list) and nuc_list[4] < 90:
-            freq_seq_list.append('(-)')
-        elif nuc_list[5] == max(nuc_list) and nuc_list[5] >= 90:
-            freq_seq_list.append('+')
-        elif nuc_list[5] == max(nuc_list) and nuc_list[5] < 90:
-            freq_seq_list.append('(+)')
+        for i, nuc, nuc_mix in zip(num_id, list_add, list_add_mix):
+            if nuc_list[i] == max(nuc_list) and nuc_list[0] >= 90:
+                freq_seq_list.append(nuc)
+            elif nuc_list[i] == max(nuc_list) and nuc_list[0] < 90:
+                freq_seq_list.append(nuc_mix)
+            else:
+                pass
 
     return freq_seq_list
 
