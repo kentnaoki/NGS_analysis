@@ -5,11 +5,11 @@ import pandas as pd
 import argparse
 
 parser = argparse.ArgumentParser(description='identify positions which are different from each other')
-parser.add_argument('input_initial_control', help='file name for initial control sequence after "/mnt/c/Users/naoki/Downloads/remdesivir/raw_data/"')
-parser.add_argument('input_control', help='file name for control sequence after "/mnt/c/Users/naoki/Downloads/remdesivir/raw_data/"')
-parser.add_argument('input_Remdesivir', help='file name for virus adapted to Remdesivir after "/mnt/c/Users/naoki/Downloads/remdesivir/raw_data/"')
-parser.add_argument('input_high_concentration_Remdesivir', help='file name for virus adapted to high concentrarion Remdesivir after "/mnt/c/Users/naoki/Downloads/remdesivir/raw_data/"')
-parser.add_argument('output_strain_number', help='number which represents the number of strain in the bracket "/mnt/c/Users/naoki/Downloads/remdesivir/analysis/differences_compared_with_con-seq/()_sequence.csv"')
+parser.add_argument('input_initial_control', help='file name for initial control sequence after "path to the directory that includes raw data"')
+parser.add_argument('input_control', help='file name for control sequence after "path to the directory that includes raw data"')
+parser.add_argument('input_Remdesivir', help='file name for virus adapted to Remdesivir after "path to the directory that includes raw data"')
+parser.add_argument('input_high_concentration_Remdesivir', help='file name for virus adapted to high concentrarion Remdesivir after "path to the directory that includes raw data"')
+parser.add_argument('output_strain_number', help='number which represents the number of strain')
 
 args = parser.parse_args()
 
