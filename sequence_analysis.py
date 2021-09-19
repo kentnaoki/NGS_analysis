@@ -14,10 +14,10 @@ parser.add_argument('output_strain_number', help='number which represents the nu
 args = parser.parse_args()
 
 #read csv to dataframe
-df_ini = pd.read_csv("/mnt/c/Users/naoki/Downloads/Remdesivir/raw_data/{}".format(args.input_initial_control), error_bad_lines=False, sep='\t')
-df_con = pd.read_csv("/mnt/c/Users/naoki/Downloads/Remdesivir/raw_data/{}".format(args.input_control), error_bad_lines=False, sep='\t')
-df_rem = pd.read_csv("/mnt/c/Users/naoki/Downloads/Remdesivir/raw_data/{}".format(args.input_Remdesivir), error_bad_lines=False, sep='\t')
-df_hrem = pd.read_csv("/mnt/c/Users/naoki/Downloads/Remdesivir/raw_data/{}".format(args.input_high_concentration_Remdesivir), error_bad_lines=False, sep='\t')
+df_ini = pd.read_csv("path to the directory that the raw data is included/{}".format(args.input_initial_control), error_bad_lines=False, sep='\t')
+df_con = pd.read_csv("path to the directory that the raw data is included/{}".format(args.input_control), error_bad_lines=False, sep='\t')
+df_rem = pd.read_csv("path to the directory that the raw data is included/{}".format(args.input_Remdesivir), error_bad_lines=False, sep='\t')
+df_hrem = pd.read_csv("path to the directory that the raw data is included/{}".format(args.input_high_concentration_Remdesivir), error_bad_lines=False, sep='\t')
 
 #create initial most frequent sequence
 def most_freq_nuc(df_file):
@@ -89,7 +89,7 @@ df2 = pd.DataFrame(dataframe_list)
 print(df2)
 
 #to csv
-df2.to_csv("/mnt/c/Users/naoki/Downloads/remdesivir/analysis/differences_compared_with_con-seq/sequence/{}_sequence_final_version.csv".format(args.output_strain_number), index=False)
+df2.to_csv("path to the directory you want to add the file/{}.csv".format(args.output_strain_number), index=False)
 
 #insert 'status' as a column
 df_ini['status'] = 'Ini_control'
@@ -115,4 +115,4 @@ df_detail = df_detail.drop('Unnamed: 21', axis=1)
 print(df_detail)
 
 #to csv
-df_detail.to_csv("/mnt/c/Users/naoki/Downloads/remdesivir/analysis/differences_compared_with_con-seq/details_of_diff/{}_details_final_version.csv".format(args.output_strain_number), index=False)
+df_detail.to_csv("path to the directory you want to add the file/{}.csv".format(args.output_strain_number), index=False)
